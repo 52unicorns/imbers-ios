@@ -8,12 +8,22 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
   let manager = AFHTTPRequestOperationManager()
   let ssToken = SSToken(service: kSSTokenAuthService)
   
+  @IBOutlet weak var tableView: UITableView!
+  
+  var matches: [AnyObject] = [] {
+    didSet {
+      self.tableView.reloadData()
+    }
+  }
+  
   override func viewDidLoad() {
     super.viewDidLoad()
+    
+    self.getMatches(self.getToken())
     
     self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
   }
@@ -39,6 +49,58 @@ class ViewController: UIViewController {
   
   func deleteToken() {
     ssToken.destroy(kSSTokenAuthAccount)
+  }
+  
+  func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    //TODO - Preload and prepare these. Do not calculate them every time!!!
+    var cell: MatchCell = self.tableView.dequeueReusableCellWithIdentifier("MatchCell") as MatchCell
+    
+    //println(self.matches[indexPath.row])
+    
+    return cell
+  }
+  
+      override func preferredStatusBarStyle() -> UIStatusBarStyle {
+          return UIStatusBarStyle.LightContent
+      }
+  
+  
+  /**
+  * Define the height of each cell.
+  */
+  func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath!) -> CGFloat {
+    return 44
+  }
+  
+  /**
+  * A table view cell was selected.
+  */
+  func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
+    //self.performSegueWithIdentifier("DetailedGoalView", sender: self)
+  }
+  
+  /**
+  * Define the number of rows in each section.
+  *
+  * Called multiple times?! Why?
+  */
+  func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    return self.matches.count
+  }
+  
+  
+  private func getMatches(token: AnyObject?) {
+    self.manager.requestSerializer.setValue("Bearer \(token!)", forHTTPHeaderField: "Authorization")
+    
+    self.manager.GET("\(kBaseUrl)/api/v0/matches", parameters: nil,
+      success: { (operation: AFHTTPRequestOperation!,responseObject: AnyObject!) in
+        for result in responseObject as NSArray {
+          self.matches.append(result)
+        }
+      },
+      failure: { (operation: AFHTTPRequestOperation!,error: NSError!) in
+        println("Error: " + error.localizedDescription)
+    })
   }
   
   private func revokeAuthToken() {
