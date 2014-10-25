@@ -15,14 +15,17 @@ class LoginViewController: UIViewController, FBLoginViewDelegate {
     "user_friends",
     "user_likes",
     "user_interests",
-    "user_birthday"
-  ] 
+    "user_birthday",
+    "user_location"
+  ]
   
   @IBAction func fbLoginButtonTapped(sender: AnyObject) {
     FBSession.openActiveSessionWithReadPermissions(permissions, allowLoginUI: true, completionHandler: {
       session, state, error in
       
       var accessToken = FBSession.activeSession().accessTokenData?.accessToken
+      println(accessToken)
+      
       self.performSegueWithIdentifier("LoginSegue", sender: self)
     })
   }

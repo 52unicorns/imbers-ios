@@ -9,11 +9,17 @@
 import UIKit
 
 class ViewController: UIViewController {
-
   override func viewDidLoad() {
     super.viewDidLoad()
     
     self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+  }
+  
+  override func viewDidAppear(animated: Bool) {
+    if kTutorialSeen == false {
+      kTutorialSeen = true
+      self.performSegueWithIdentifier("TutorialSegue", sender: self)
+    }
   }
 
   override func didReceiveMemoryWarning() {
