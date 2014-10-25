@@ -9,3 +9,9 @@
 import Foundation
 
 var kTutorialSeen = false
+
+// Base API URL
+let kBaseUrl = "http://localhost:3000/"
+
+let kSSTokenAuthService = "Authorization"
+let kSSTokenAuthAccount = "AuthToken"

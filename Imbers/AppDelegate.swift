@@ -10,13 +10,13 @@ import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+  let ssToken = SSToken(service: kSSTokenAuthService)
   var window: UIWindow?
 
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
     var logged = false
     
-    if let token = FBSession.activeSession().accessTokenData?.accessToken {
+    if let token = ssToken.get(kSSTokenAuthAccount) {
         logged = true
     }
     

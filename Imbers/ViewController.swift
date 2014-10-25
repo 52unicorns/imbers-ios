@@ -9,6 +9,9 @@
 import UIKit
 
 class ViewController: UIViewController {
+  let manager = AFHTTPRequestOperationManager()
+  let ssToken = SSToken(service: kSSTokenAuthService)
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     
@@ -27,8 +30,31 @@ class ViewController: UIViewController {
   }
   
   @IBAction func logoutButtonTapped(sender: UIButton) {
-    FBSession.activeSession().closeAndClearTokenInformation()
-    self.performSegueWithIdentifier("LogoutSegue", sender: self)
+    self.revokeAuthToken()
+  }
+  
+  func getToken() -> String {
+    return ssToken.get(kSSTokenAuthAccount)!
+  }
+  
+  func deleteToken() {
+    ssToken.destroy(kSSTokenAuthAccount)
+  }
+  
+  private func revokeAuthToken() {
+    var params = ["token": self.getToken()]
+    
+    self.manager.responseSerializer = AFJSONResponseSerializer()
+    self.manager.POST("\(kBaseUrl)/oauth/revoke", parameters: params,
+      success: { (operation, responseObject) in
+        self.deleteToken()
+        FBSession.activeSession().closeAndClearTokenInformation()
+        self.performSegueWithIdentifier("LogoutSegue", sender: self)
+      }, failure: { (operation: AFHTTPRequestOperation!, error: NSError!) in
+        var alert = UIAlertView(title: "Error", message: error.localizedDescription, delegate: nil, cancelButtonTitle: "OK")
+        alert.show()
+      }
+    )
   }
 }
 
