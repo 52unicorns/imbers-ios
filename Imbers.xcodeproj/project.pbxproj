@@ -7,12 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		35BED66E0B2A99B7C892E009 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 50065602FB7D046F3A565E5A /* libPods.a */; };
 		AEA2FEAF19FBFFEB007E06D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA2FEAE19FBFFEB007E06D7 /* AppDelegate.swift */; };
 		AEA2FEB119FBFFEB007E06D7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA2FEB019FBFFEB007E06D7 /* ViewController.swift */; };
 		AEA2FEB419FBFFEB007E06D7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AEA2FEB219FBFFEB007E06D7 /* Main.storyboard */; };
 		AEA2FEB619FBFFEB007E06D7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AEA2FEB519FBFFEB007E06D7 /* Images.xcassets */; };
 		AEA2FEB919FBFFEB007E06D7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = AEA2FEB719FBFFEB007E06D7 /* LaunchScreen.xib */; };
 		AEA2FEC519FBFFEB007E06D7 /* ImbersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA2FEC419FBFFEB007E06D7 /* ImbersTests.swift */; };
+		AEA2FECF19FC07BC007E06D7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA2FECE19FC07BC007E06D7 /* LoginViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,6 +28,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		50065602FB7D046F3A565E5A /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		AB80D79A5A34CDA7843CAA8F /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		AEA2FEA919FBFFEB007E06D7 /* Imbers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Imbers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEA2FEAD19FBFFEB007E06D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AEA2FEAE19FBFFEB007E06D7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -36,6 +40,9 @@
 		AEA2FEBE19FBFFEB007E06D7 /* ImbersTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ImbersTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEA2FEC319FBFFEB007E06D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AEA2FEC419FBFFEB007E06D7 /* ImbersTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImbersTests.swift; sourceTree = "<group>"; };
+		AEA2FECE19FC07BC007E06D7 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		AEA2FED019FC07EB007E06D7 /* Imbers-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Imbers-Bridging-Header.h"; sourceTree = "<group>"; };
+		E90D66002625CD7521A83DAC /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +50,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				35BED66E0B2A99B7C892E009 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,12 +64,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		45BF82862BAC81608541F332 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				50065602FB7D046F3A565E5A /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		61CD2358F2492AE9679EE6C7 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				AB80D79A5A34CDA7843CAA8F /* Pods.debug.xcconfig */,
+				E90D66002625CD7521A83DAC /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		AEA2FEA019FBFFEB007E06D7 = {
 			isa = PBXGroup;
 			children = (
 				AEA2FEAB19FBFFEB007E06D7 /* Imbers */,
 				AEA2FEC119FBFFEB007E06D7 /* ImbersTests */,
 				AEA2FEAA19FBFFEB007E06D7 /* Products */,
+				61CD2358F2492AE9679EE6C7 /* Pods */,
+				45BF82862BAC81608541F332 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -79,10 +106,12 @@
 			children = (
 				AEA2FEAE19FBFFEB007E06D7 /* AppDelegate.swift */,
 				AEA2FEB019FBFFEB007E06D7 /* ViewController.swift */,
+				AEA2FECE19FC07BC007E06D7 /* LoginViewController.swift */,
 				AEA2FEB219FBFFEB007E06D7 /* Main.storyboard */,
 				AEA2FEB519FBFFEB007E06D7 /* Images.xcassets */,
 				AEA2FEB719FBFFEB007E06D7 /* LaunchScreen.xib */,
 				AEA2FEAC19FBFFEB007E06D7 /* Supporting Files */,
+				AEA2FED019FC07EB007E06D7 /* Imbers-Bridging-Header.h */,
 			);
 			path = Imbers;
 			sourceTree = "<group>";
@@ -119,9 +148,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AEA2FEC819FBFFEB007E06D7 /* Build configuration list for PBXNativeTarget "Imbers" */;
 			buildPhases = (
+				48D006925C5ED4561C703A78 /* Check Pods Manifest.lock */,
 				AEA2FEA519FBFFEB007E06D7 /* Sources */,
 				AEA2FEA619FBFFEB007E06D7 /* Frameworks */,
 				AEA2FEA719FBFFEB007E06D7 /* Resources */,
+				494E58366B848B62DD46B129 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -207,11 +238,45 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		48D006925C5ED4561C703A78 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		494E58366B848B62DD46B129 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		AEA2FEA519FBFFEB007E06D7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AEA2FECF19FC07BC007E06D7 /* LoginViewController.swift in Sources */,
 				AEA2FEB119FBFFEB007E06D7 /* ViewController.swift in Sources */,
 				AEA2FEAF19FBFFEB007E06D7 /* AppDelegate.swift in Sources */,
 			);
@@ -334,21 +399,25 @@
 		};
 		AEA2FEC919FBFFEB007E06D7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AB80D79A5A34CDA7843CAA8F /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Imbers/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Imbers/Imbers-Bridging-Header.h";
 			};
 			name = Debug;
 		};
 		AEA2FECA19FBFFEB007E06D7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E90D66002625CD7521A83DAC /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Imbers/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Imbers/Imbers-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -405,6 +474,7 @@
 				AEA2FECA19FBFFEB007E06D7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		AEA2FECB19FBFFEB007E06D7 /* Build configuration list for PBXNativeTarget "ImbersTests" */ = {
 			isa = XCConfigurationList;
@@ -413,6 +483,7 @@
 				AEA2FECD19FBFFEB007E06D7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

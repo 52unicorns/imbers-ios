@@ -12,14 +12,17 @@ class ViewController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    // Do any additional setup after loading the view, typically from a nib.
+    
+    self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
   }
 
   override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()
-    // Dispose of any resources that can be recreated.
   }
-
-
+  
+  @IBAction func logoutButtonTapped(sender: UIButton) {
+    FBSession.activeSession().closeAndClearTokenInformation()
+    self.performSegueWithIdentifier("LogoutSegue", sender: self)
+  }
 }
 
