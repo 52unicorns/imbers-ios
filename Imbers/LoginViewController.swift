@@ -7,10 +7,12 @@
 //
 
 import UIKit
+import MediaPlayer
 
 class LoginViewController: UIViewController, FBLoginViewDelegate {
   let manager = AFHTTPRequestOperationManager()
   let ssToken = SSToken(service: kSSTokenAuthService)
+  let moviePlayer: MPMoviePlayerController = MPMoviePlayerController()
   
   let permissions = [
     "public_profile",
@@ -22,6 +24,12 @@ class LoginViewController: UIViewController, FBLoginViewDelegate {
     "user_location"
   ]
   
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    
+    self.playVideo()
+  }
+  
   @IBAction func fbLoginButtonTapped(sender: AnyObject) {
     FBSession.openActiveSessionWithReadPermissions(permissions, allowLoginUI: true, completionHandler: {
       session, state, error in
@@ -32,6 +40,19 @@ class LoginViewController: UIViewController, FBLoginViewDelegate {
         self.authenticate(accessToken!)
       }
     })
+  }
+  
+  func playVideo() {
+    var path = NSBundle.mainBundle().pathForResource("test", ofType: "mp4")
+    var url = NSURL(fileURLWithPath: path!)
+    moviePlayer.contentURL = url
+    
+    moviePlayer.view.frame = CGRectMake(view.frame.origin.x, view.frame.origin.y, view.frame.size.width, view.frame.size.height)
+    moviePlayer.controlStyle = MPMovieControlStyle.None
+    
+    view.addSubview(moviePlayer.view)
+    view.sendSubviewToBack(moviePlayer.view)
+    moviePlayer.play()
   }
   
   private func authenticate(token: String) {
