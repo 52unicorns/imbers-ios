@@ -311,7 +311,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MatchCell" id="02W-gR-wvY" customClass="MatchCell" customModule="Imbers" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MatchCell" rowHeight="60" id="02W-gR-wvY" customClass="MatchCell" customModule="Imbers" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="02W-gR-wvY" id="pDZ-5M-l8V">
@@ -322,10 +322,40 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
+                                                    <variation key="widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="8" y="-1" width="304" height="44"/>
+                                                    </variation>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2c8-1V-vA5">
+                                                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="32" id="3qR-jb-EOD"/>
+                                                        <constraint firstAttribute="height" constant="32" id="NTT-Kv-5fA"/>
+                                                    </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="16"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="clipsToBounds" value="YES"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="3qR-jb-EOD"/>
+                                                            <exclude reference="NTT-Kv-5fA"/>
+                                                        </mask>
+                                                    </variation>
+                                                    <variation key="widthClass=compact">
+                                                        <mask key="constraints">
+                                                            <include reference="3qR-jb-EOD"/>
+                                                            <include reference="NTT-Kv-5fA"/>
+                                                        </mask>
+                                                    </variation>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="Vfu-x8-Bbh" firstAttribute="top" secondItem="pDZ-5M-l8V" secondAttribute="topMargin" constant="-9" id="2eL-LI-9wH"/>
+                                                <constraint firstAttribute="centerY" secondItem="2c8-1V-vA5" secondAttribute="centerY" constant="-0.5" id="D9P-62-iwc"/>
+                                                <constraint firstItem="2c8-1V-vA5" firstAttribute="leading" secondItem="pDZ-5M-l8V" secondAttribute="leadingMargin" id="Gx5-P5-15a"/>
                                                 <constraint firstItem="Vfu-x8-Bbh" firstAttribute="leading" secondItem="pDZ-5M-l8V" secondAttribute="leadingMargin" id="eGy-Qx-JGv"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="Vfu-x8-Bbh" secondAttribute="bottom" constant="-8" id="iPz-Rr-Gxb"/>
                                                 <constraint firstItem="Vfu-x8-Bbh" firstAttribute="trailing" secondItem="pDZ-5M-l8V" secondAttribute="trailingMargin" id="jCJ-HN-JY8"/>
@@ -333,27 +363,34 @@
                                             <variation key="default">
                                                 <mask key="subviews">
                                                     <exclude reference="Vfu-x8-Bbh"/>
+                                                    <exclude reference="2c8-1V-vA5"/>
                                                 </mask>
                                                 <mask key="constraints">
                                                     <exclude reference="2eL-LI-9wH"/>
                                                     <exclude reference="eGy-Qx-JGv"/>
                                                     <exclude reference="iPz-Rr-Gxb"/>
                                                     <exclude reference="jCJ-HN-JY8"/>
+                                                    <exclude reference="D9P-62-iwc"/>
+                                                    <exclude reference="Gx5-P5-15a"/>
                                                 </mask>
                                             </variation>
                                             <variation key="widthClass=compact">
                                                 <mask key="subviews">
                                                     <include reference="Vfu-x8-Bbh"/>
+                                                    <include reference="2c8-1V-vA5"/>
                                                 </mask>
                                                 <mask key="constraints">
                                                     <include reference="2eL-LI-9wH"/>
                                                     <include reference="eGy-Qx-JGv"/>
                                                     <include reference="iPz-Rr-Gxb"/>
                                                     <include reference="jCJ-HN-JY8"/>
+                                                    <include reference="D9P-62-iwc"/>
+                                                    <include reference="Gx5-P5-15a"/>
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="avatarImageView" destination="2c8-1V-vA5" id="fcU-LI-jcd"/>
                                             <outlet property="matchName" destination="Vfu-x8-Bbh" id="YG6-X6-QRd"/>
                                         </connections>
                                     </tableViewCell>
@@ -413,7 +450,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Uvf-D3-YoS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1447.5" y="278"/>
+            <point key="canvasLocation" x="1447.5" y="276"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Cca-xc-eO7">

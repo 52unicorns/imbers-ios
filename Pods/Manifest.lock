@@ -23,22 +23,17 @@ PODS:
   - Bolts (1.1.3)
   - Facebook-iOS-SDK (3.19.0):
     - Bolts (~> 1.0)
-  - SDWebImage (3.7.1):
-    - SDWebImage/Core
-  - SDWebImage/Core (3.7.1)
   - SSKeychain (1.2.2)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.0)
   - Facebook-iOS-SDK (~> 3.19)
-  - SDWebImage
   - SSKeychain
 
 SPEC CHECKSUMS:
   AFNetworking: 0aabc6fae66d6e5d039eeb21c315843c7aae51ab
   Bolts: 3db0a875235e0c9042b013af13af0f00f79b102c
   Facebook-iOS-SDK: cb7d74759d0b1ba546e6e6f1dde407b0d4e448d6
-  SDWebImage: 116e88633b5b416ea0ca4b334a4ac59cf72dd38d
   SSKeychain: cc48bd3ad24fcd9125adb9e0d23dd50b8bbd08b9
 
 COCOAPODS: 0.34.1
