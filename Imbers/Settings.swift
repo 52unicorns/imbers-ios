@@ -8,7 +8,7 @@
 
 import Foundation
 
-var kTutorialSeen = true
+var kTutorialSeen = false
 
 // Base API URL
 let kBaseUrl = "http://localhost:3000"
