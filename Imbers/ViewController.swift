@@ -14,7 +14,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
   
   @IBOutlet weak var tableView: UITableView!
   
-  var matches: [AnyObject] = [] {
+  var matches: [Match] = [] {
     didSet {
       self.tableView.reloadData()
     }
@@ -58,9 +58,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     //TODO - Preload and prepare these. Do not calculate them every time!!!
     var cell: MatchCell = self.tableView.dequeueReusableCellWithIdentifier("MatchCell") as MatchCell
 
-    var user = self.matches[indexPath.row] as User
-    cell.matchId = user.name
-    cell.avatar = user.avatar
+    var match = self.matches[indexPath.row]
+    cell.matchId = match.user.name
+    cell.avatar = match.user.avatar
     
     return cell
   }
@@ -81,7 +81,16 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
   */
   func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
     println(indexPath.row)
-    //self.performSegueWithIdentifier("DetailedGoalView", sender: self)
+    self.performSegueWithIdentifier("ChatSegue", sender: self)
+  }
+  
+  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    if segue.identifier == "ChatSegue" {
+      var indexPath = tableView.indexPathForSelectedRow()!
+      var vc = segue.destinationViewController as ChatController
+      
+      vc.match = self.matches[indexPath.row] as Match
+    }
   }
   
   /**
@@ -101,8 +110,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     self.manager.GET("\(kBaseUrl)/api/v0/matches", parameters: nil,
       success: { (operation: AFHTTPRequestOperation! ,responseObject: AnyObject!) in
         for result in responseObject as NSArray {
-          var user = User(data: result["user"]!! as NSDictionary)
-          self.matches.append(user)
+          var match = Match(data: result as NSDictionary)
+          self.matches.append(match)
+          self.tableView.reloadData()
         }
       },
       failure: { (operation: AFHTTPRequestOperation!,error: NSError!) in
