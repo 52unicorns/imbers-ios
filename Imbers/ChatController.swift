@@ -137,7 +137,7 @@ class ChatController: JSQMessagesViewController, UIActionSheetDelegate {
   
   
   override func didPressAccessoryButton(sender: UIButton!) {
-    var sheet = UIActionSheet(title: "Do you want to reveal your Facebook identity?", delegate: self, cancelButtonTitle: "Cancel", destructiveButtonTitle: nil, otherButtonTitles: "Reveal", "Decline")
+    var sheet = UIActionSheet(title: "Do you want to reveal your Facebook identity?", delegate: self, cancelButtonTitle: "Cancel", destructiveButtonTitle: nil, otherButtonTitles: "Reveal")
     
     sheet.delegate = self
     
@@ -146,9 +146,23 @@ class ChatController: JSQMessagesViewController, UIActionSheetDelegate {
   
   
   func actionSheet(actionSheet: UIActionSheet, clickedButtonAtIndex buttonIndex: Int) {
-    println("\(buttonIndex)")
+    if buttonIndex == 1 {
+      self.revealAccount()
+    }
   }
   
+  private func revealAccount() {
+    self.manager.requestSerializer.setValue("Bearer \(self.getToken())", forHTTPHeaderField: "Authorization")
+    
+    self.manager.POST("\(kBaseUrl)/api/v0/matches/\(match.id)/reveal", parameters: nil,
+      success: { (operation, responseObject) in
+        println(responseObject)
+      }, failure: { (operation: AFHTTPRequestOperation!, error: NSError!) in
+        var alert = UIAlertView(title: "Error", message: error.localizedDescription, delegate: nil, cancelButtonTitle: "OK")
+        alert.show()
+      }
+    )
+  }
   
   
   
