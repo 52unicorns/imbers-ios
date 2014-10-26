@@ -25,6 +25,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     self.getMatches(self.getToken())
     
+    // Get rid of default separators.
+    self.tableView.tableFooterView = UIView(frame: CGRectZero)
+    
     self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
   }
   
@@ -55,27 +58,31 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     //TODO - Preload and prepare these. Do not calculate them every time!!!
     var cell: MatchCell = self.tableView.dequeueReusableCellWithIdentifier("MatchCell") as MatchCell
     
-    //println(self.matches[indexPath.row])
+
+//
+//    let jsonDict = NSJSONSerialization.JSONObjectWithData(jsonData, options: nil, error: nil) as NSDictionary
+//    
+//    println(jsonDict)
     
     return cell
   }
   
-      override func preferredStatusBarStyle() -> UIStatusBarStyle {
-          return UIStatusBarStyle.LightContent
-      }
-  
+  override func preferredStatusBarStyle() -> UIStatusBarStyle {
+    return UIStatusBarStyle.LightContent
+  }
   
   /**
   * Define the height of each cell.
   */
   func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath!) -> CGFloat {
-    return 44
+    return kCellHeight
   }
   
   /**
   * A table view cell was selected.
   */
   func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
+    println(indexPath.row)
     //self.performSegueWithIdentifier("DetailedGoalView", sender: self)
   }
   
@@ -88,12 +95,19 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     return self.matches.count
   }
   
+
+
   
   private func getMatches(token: AnyObject?) {
     self.manager.requestSerializer.setValue("Bearer \(token!)", forHTTPHeaderField: "Authorization")
     
     self.manager.GET("\(kBaseUrl)/api/v0/matches", parameters: nil,
-      success: { (operation: AFHTTPRequestOperation!,responseObject: AnyObject!) in
+      success: { (operation,responseObject) in
+//        let json = JSON(data: responseObject as NSData)
+//        if let userName = json[0]["user"]["first_name"].string {
+//          println(userName)
+//        }
+        
         for result in responseObject as NSArray {
           self.matches.append(result)
         }
