@@ -24,7 +24,6 @@ class ChatController: JSQMessagesViewController, UIActionSheetDelegate {
     
     self.title = "Messages";
     
-
 //    self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "logout"), style: UIBarButtonItemStyle.Plain, target: self, action: "receiveMessagePressed")
   }
   
