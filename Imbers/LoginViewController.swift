@@ -43,10 +43,11 @@ class LoginViewController: UIViewController, FBLoginViewDelegate {
   }
   
   func playVideo() {
-    var path = NSBundle.mainBundle().pathForResource("test", ofType: "mp4")
+    var path = NSBundle.mainBundle().pathForResource("signin", ofType: "mov")
     var url = NSURL(fileURLWithPath: path!)
     moviePlayer.contentURL = url
-    
+    moviePlayer.scalingMode = MPMovieScalingMode.AspectFill
+    moviePlayer.repeatMode = MPMovieRepeatMode.One
     moviePlayer.view.frame = CGRectMake(view.frame.origin.x, view.frame.origin.y, view.frame.size.width, view.frame.size.height)
     moviePlayer.controlStyle = MPMovieControlStyle.None
     

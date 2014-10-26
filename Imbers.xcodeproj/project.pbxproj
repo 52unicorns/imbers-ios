@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		35BED66E0B2A99B7C892E009 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 50065602FB7D046F3A565E5A /* libPods.a */; };
+		8891403719FD636A009C36FA /* signin.mov in Resources */ = {isa = PBXBuildFile; fileRef = 8891403619FD636A009C36FA /* signin.mov */; };
 		AE3154D719FC35260045C0F5 /* SSToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3154D619FC35260045C0F5 /* SSToken.swift */; };
-		AE6C3D4D19FD021B00EF86D4 /* test.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = AE6C3D4C19FD021B00EF86D4 /* test.mp4 */; };
 		AE7EAA7919FCC484007D14CB /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7EAA7819FCC484007D14CB /* User.swift */; };
 		AE7EAA7B19FCCB42007D14CB /* ChatController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7EAA7A19FCCB42007D14CB /* ChatController.swift */; };
 		AE7EAA7D19FCCBB9007D14CB /* Messages.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7EAA7C19FCCBB9007D14CB /* Messages.swift */; };
@@ -44,9 +44,9 @@
 
 /* Begin PBXFileReference section */
 		50065602FB7D046F3A565E5A /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		8891403619FD636A009C36FA /* signin.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = signin.mov; sourceTree = "<group>"; };
 		AB80D79A5A34CDA7843CAA8F /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		AE3154D619FC35260045C0F5 /* SSToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSToken.swift; sourceTree = "<group>"; };
-		AE6C3D4C19FD021B00EF86D4 /* test.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = test.mp4; sourceTree = "<group>"; };
 		AE7EAA7819FCC484007D14CB /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		AE7EAA7A19FCCB42007D14CB /* ChatController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatController.swift; sourceTree = "<group>"; };
 		AE7EAA7C19FCCBB9007D14CB /* Messages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Messages.swift; sourceTree = "<group>"; };
@@ -160,9 +160,9 @@
 			isa = PBXGroup;
 			children = (
 				AED2463719FD505300D6E53B /* page1.png */,
+				8891403619FD636A009C36FA /* signin.mov */,
 				AED2463819FD505300D6E53B /* page2.png */,
 				AED2463919FD505300D6E53B /* page3.png */,
-				AE6C3D4C19FD021B00EF86D4 /* test.mp4 */,
 				AEA2FEDF19FC3161007E06D7 /* page0.png */,
 				AEA2FEAD19FBFFEB007E06D7 /* Info.plist */,
 			);
@@ -273,8 +273,8 @@
 				AED2463B19FD505300D6E53B /* page2.png in Resources */,
 				AED2463A19FD505300D6E53B /* page1.png in Resources */,
 				AED2463C19FD505300D6E53B /* page3.png in Resources */,
-				AE6C3D4D19FD021B00EF86D4 /* test.mp4 in Resources */,
 				AEA2FEB619FBFFEB007E06D7 /* Images.xcassets in Resources */,
+				8891403719FD636A009C36FA /* signin.mov in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
