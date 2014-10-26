@@ -57,12 +57,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     //TODO - Preload and prepare these. Do not calculate them every time!!!
     var cell: MatchCell = self.tableView.dequeueReusableCellWithIdentifier("MatchCell") as MatchCell
-    
 
-//
-//    let jsonDict = NSJSONSerialization.JSONObjectWithData(jsonData, options: nil, error: nil) as NSDictionary
-//    
-//    println(jsonDict)
+    var user = self.matches[indexPath.row] as User
+    cell.matchId = user.name
+    cell.avatar = user.avatar
     
     return cell
   }
@@ -95,21 +93,16 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     return self.matches.count
   }
   
-
-
+  
   
   private func getMatches(token: AnyObject?) {
     self.manager.requestSerializer.setValue("Bearer \(token!)", forHTTPHeaderField: "Authorization")
     
     self.manager.GET("\(kBaseUrl)/api/v0/matches", parameters: nil,
-      success: { (operation,responseObject) in
-//        let json = JSON(data: responseObject as NSData)
-//        if let userName = json[0]["user"]["first_name"].string {
-//          println(userName)
-//        }
-        
+      success: { (operation: AFHTTPRequestOperation! ,responseObject: AnyObject!) in
         for result in responseObject as NSArray {
-          self.matches.append(result)
+          var user = User(data: result["user"]!! as NSDictionary)
+          self.matches.append(user)
         }
       },
       failure: { (operation: AFHTTPRequestOperation!,error: NSError!) in

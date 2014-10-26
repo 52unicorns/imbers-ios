@@ -17,6 +17,12 @@ class MatchCell: UITableViewCell {
     }
   }
   
+  var avatar: String = "" {
+    didSet {
+      self.loadPicture()
+    }
+  }
+  
   @IBOutlet weak var matchName: UILabel!
   
   override func translatesAutoresizingMaskIntoConstraints() -> Bool {
@@ -24,6 +30,10 @@ class MatchCell: UITableViewCell {
   }
   
   private func reloadAmounts() {
-    matchName.text = "\(matchId))"
+    matchName.text = "\(matchId)"
+  }
+  
+  private func loadPicture() {
+    
   }
 }
