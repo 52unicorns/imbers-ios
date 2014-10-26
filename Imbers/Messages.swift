@@ -25,9 +25,17 @@ class Messages: NSObject {
   }
 
   func addMessage(message: Message) {
-    var msg = JSQTextMessage(senderId: message.user.id, senderDisplayName: message.user.name, date: NSDate(), text: message.body);
+    var msg = JSQTextMessage(senderId: message.user.id, senderDisplayName: message.user.name, date: message.date, text: message.body);
     
     messages.insertObject(msg, atIndex: 0)
     //messages.addObject(msg)
   }
+  
+  func addLastMessage(message: Message) {
+    var msg = JSQTextMessage(senderId: message.user.id, senderDisplayName: message.user.name, date: message.date, text: message.body);
+    
+    //messages.insertObject(msg, atIndex: 0)
+    messages.addObject(msg)
+  }
+  
 }

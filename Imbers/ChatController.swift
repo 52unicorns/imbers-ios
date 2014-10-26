@@ -12,6 +12,8 @@ class ChatController: JSQMessagesViewController, UIActionSheetDelegate {
   let manager = AFHTTPRequestOperationManager()
   let ssToken = SSToken(service: kSSTokenAuthService)
   var data = Messages()
+  var timer: NSTimer!
+  var lastDate = ""
   
   var match: Match! {
     didSet {
@@ -31,6 +33,12 @@ class ChatController: JSQMessagesViewController, UIActionSheetDelegate {
     super.viewDidAppear(animated)
   }
   
+  override func viewWillDisappear(animated: Bool) {
+    super.viewWillDisappear(animated)
+    
+    timer.invalidate()
+  }
+  
   func getToken() -> String {
     return ssToken.get(kSSTokenAuthAccount)!
   }
@@ -40,18 +48,45 @@ class ChatController: JSQMessagesViewController, UIActionSheetDelegate {
     
     self.manager.GET("\(kBaseUrl)/api/v0/matches/\(match.id)/messages", parameters: nil,
       success: { (operation: AFHTTPRequestOperation! ,responseObject: AnyObject!) in
-        println(responseObject.count)
-
+        self.lastDate = responseObject[0]["created_at"] as String
+        
         for result in responseObject as NSArray {
+          
           var message = Message(data: result as NSDictionary)
           
           self.data.addMessage(message)
           self.collectionView.reloadData()
         }
-        
+
         self.title = "\(50 - self.data.messages.count) Messages Left";
 
         self.scrollToBottomAnimated(true)
+        
+        self.timer = NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: Selector("loadNewMessages"), userInfo: nil, repeats: true)
+      },
+      failure: { (operation: AFHTTPRequestOperation!,error: NSError!) in
+        println("Error: " + error.localizedDescription)
+    })
+  }
+  
+  func loadNewMessages() {
+    self.manager.requestSerializer.setValue("Bearer \(self.getToken())", forHTTPHeaderField: "Authorization")
+
+    self.manager.GET("\(kBaseUrl)/api/v0/matches/\(match.id)/messages?since=\(self.lastDate)", parameters: nil,
+      success: { (operation: AFHTTPRequestOperation! ,responseObject: AnyObject!) in
+        if responseObject.count > 0 {
+          self.lastDate = responseObject[0]["created_at"] as String
+          
+          for result in responseObject as NSArray {
+            var message = Message(data: result as NSDictionary)
+            
+            self.data.addLastMessage(message)
+            self.collectionView.reloadData()
+          }
+          
+          self.title = "\(50 - self.data.messages.count) Messages Left";
+          self.scrollToBottomAnimated(true)
+        }
       },
       failure: { (operation: AFHTTPRequestOperation!,error: NSError!) in
         println("Error: " + error.localizedDescription)
@@ -63,11 +98,17 @@ class ChatController: JSQMessagesViewController, UIActionSheetDelegate {
     
     self.manager.requestSerializer.setValue("Bearer \(self.getToken())", forHTTPHeaderField: "Authorization")
     
+    if data.messages.count >= 50 {
+      return
+    }
+    
     self.manager.POST("\(kBaseUrl)/api/v0/matches/\(match.id)/messages", parameters: params,
       success: { (operation, responseObject) in
+        self.lastDate = responseObject["created_at"] as String
+        
         var message = Message(data: responseObject as NSDictionary)
         
-        self.data.addMessage(message)
+        self.data.addLastMessage(message)
         self.collectionView.reloadData()
         
         self.title = "\(50 - self.data.messages.count) Messages Left";

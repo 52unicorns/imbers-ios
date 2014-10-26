@@ -39,6 +39,7 @@ class MatchCell: UITableViewCell {
   }
   
   private func changeImage(url: String) {
+    println(url)
     var nsurl: NSURL = NSURL(string: url)!
     var imageRequest: NSURLRequest = NSURLRequest(URL: nsurl)
     NSURLConnection.sendAsynchronousRequest(imageRequest,
@@ -49,6 +50,7 @@ class MatchCell: UITableViewCell {
         var decodedimage = UIImage(data: decodedData!)
         
         if let image = decodedimage? {
+          
           self.avatarImageView.image = image
         }
     })

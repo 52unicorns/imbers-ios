@@ -110,7 +110,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     self.manager.GET("\(kBaseUrl)/api/v0/matches", parameters: nil,
       success: { (operation: AFHTTPRequestOperation! ,responseObject: AnyObject!) in
         for result in responseObject as NSArray {
+          println(result)
           var match = Match(data: result as NSDictionary)
+    
           self.matches.append(match)
           self.tableView.reloadData()
         }
