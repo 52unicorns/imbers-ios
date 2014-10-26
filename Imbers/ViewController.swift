@@ -23,12 +23,20 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    self.getMatches(self.getToken())
-    
     // Get rid of default separators.
     self.tableView.tableFooterView = UIView(frame: CGRectZero)
     
     self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+    
+    
+    var image = UIImage(named: "logo")
+    self.navigationItem.titleView = UIImageView(image: image)
+  }
+  
+  override func viewWillAppear(animated: Bool) {
+    super.viewWillAppear(animated)
+    
+    self.getMatches(self.getToken())
   }
   
   override func viewDidAppear(animated: Bool) {
@@ -59,6 +67,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var cell: MatchCell = self.tableView.dequeueReusableCellWithIdentifier("MatchCell") as MatchCell
 
     var match = self.matches[indexPath.row]
+    cell.match = match
     cell.matchId = match.user.name
     cell.avatar = match.user.avatar
     
@@ -109,6 +118,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     self.manager.GET("\(kBaseUrl)/api/v0/matches", parameters: nil,
       success: { (operation: AFHTTPRequestOperation! ,responseObject: AnyObject!) in
+        self.matches = []
+        
         for result in responseObject as NSArray {
           println(result)
           var match = Match(data: result as NSDictionary)

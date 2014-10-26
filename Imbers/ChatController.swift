@@ -24,9 +24,15 @@ class ChatController: JSQMessagesViewController, UIActionSheetDelegate {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    self.title = "Messages";
+    self.title = "Messages"
     
+    self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+
 //    self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "logout"), style: UIBarButtonItemStyle.Plain, target: self, action: "receiveMessagePressed")
+  }
+  
+  override func preferredStatusBarStyle() -> UIStatusBarStyle {
+    return UIStatusBarStyle.LightContent
   }
   
   override func viewDidAppear(animated: Bool) {
@@ -48,20 +54,22 @@ class ChatController: JSQMessagesViewController, UIActionSheetDelegate {
     
     self.manager.GET("\(kBaseUrl)/api/v0/matches/\(match.id)/messages", parameters: nil,
       success: { (operation: AFHTTPRequestOperation! ,responseObject: AnyObject!) in
-        self.lastDate = responseObject[0]["created_at"] as String
-        
-        for result in responseObject as NSArray {
+
+        if responseObject.count > 0 {
+          self.lastDate = responseObject[0]["created_at"] as String
           
-          var message = Message(data: result as NSDictionary)
+          for result in responseObject as NSArray {
+            
+            var message = Message(data: result as NSDictionary)
+            
+            self.data.addMessage(message)
+            self.collectionView.reloadData()
+          }
           
-          self.data.addMessage(message)
-          self.collectionView.reloadData()
+          self.title = "\(50 - self.data.messages.count) Messages Left";
+          
+          self.scrollToBottomAnimated(true)
         }
-
-        self.title = "\(50 - self.data.messages.count) Messages Left";
-
-        self.scrollToBottomAnimated(true)
-        
         self.timer = NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: Selector("loadNewMessages"), userInfo: nil, repeats: true)
       },
       failure: { (operation: AFHTTPRequestOperation!,error: NSError!) in
@@ -71,7 +79,7 @@ class ChatController: JSQMessagesViewController, UIActionSheetDelegate {
   
   func loadNewMessages() {
     self.manager.requestSerializer.setValue("Bearer \(self.getToken())", forHTTPHeaderField: "Authorization")
-
+    
     self.manager.GET("\(kBaseUrl)/api/v0/matches/\(match.id)/messages?since=\(self.lastDate)", parameters: nil,
       success: { (operation: AFHTTPRequestOperation! ,responseObject: AnyObject!) in
         if responseObject.count > 0 {
@@ -154,10 +162,11 @@ class ChatController: JSQMessagesViewController, UIActionSheetDelegate {
     var bubble: JSQMessageBubbleImageDataSource!
     
     if match.user.id == msg.senderId() {
-      color = UIColor(rgba: "#459fe6")
-      bubble = bubbleFactory.outgoingMessagesBubbleImageWithColor(color) as JSQMessageBubbleImageDataSource
+      color = UIColor(rgba: "#c1a7f2")
+      bubble = bubbleFactory.incomingMessagesBubbleImageWithColor(color) as JSQMessageBubbleImageDataSource
+//      bubble = bubbleFactory.outgoingMessagesBubbleImageWithColor(color) as JSQMessageBubbleImageDataSource
     } else {
-      color = UIColor(rgba: "#77c9ff")
+      color = UIColor(rgba: "#a27aec")
       bubble = bubbleFactory.incomingMessagesBubbleImageWithColor(color) as JSQMessageBubbleImageDataSource
     }
     
@@ -222,10 +231,10 @@ class ChatController: JSQMessagesViewController, UIActionSheetDelegate {
     
     var msg = self.data.messages[indexPath.item] as JSQMessageData
     
-    if msg.senderId() != match.user.id {
-      return nil
-    }
-    
+//    if msg.senderId() != match.user.id {
+//      return nil
+//    }
+//    
     if indexPath.item - 1 >= 0 {
       var previousMessage = self.data.messages[indexPath.item - 1] as JSQMessageData
       if previousMessage.senderId() == msg.senderId() {
@@ -240,9 +249,9 @@ class ChatController: JSQMessagesViewController, UIActionSheetDelegate {
     
     var msg = self.data.messages[indexPath.item] as JSQMessageData
     
-    if msg.senderId() != match.user.id {
-      return 0
-    }
+//    if msg.senderId() != match.user.id {
+//      return 0
+//    }
     
     if indexPath.item - 1 >= 0 {
       var previousMessage = self.data.messages[indexPath.item - 1] as JSQMessageData

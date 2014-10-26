@@ -10,6 +10,7 @@ import UIKit
 
 class MatchCell: UITableViewCell {
   var index = 0
+  var match: Match!
   
   var matchId: String = "" {
     didSet {
@@ -25,12 +26,31 @@ class MatchCell: UITableViewCell {
   
   @IBOutlet weak var matchName: UILabel!
   @IBOutlet weak var avatarImageView: UIImageView!
+  @IBOutlet weak var identityLabel: UILabel!
+  @IBOutlet weak var revealButton: UIButton!
   
   override func translatesAutoresizingMaskIntoConstraints() -> Bool {
     return true
   }
   
+  @IBAction func revealeButtonTapped(sender: UIButton) {
+    revealButton.enabled = !revealButton.enabled
+    if revealButton.enabled {
+      identityLabel.text = "\(match.user.facebook_url)"
+      identityLabel.hidden = true
+    } else {
+      identityLabel.text = "\(match.user.facebook_url)"
+      identityLabel.hidden = false
+    }
+  }
+  
   private func reloadAmounts() {
+    
+    if match.revealed == true {
+      revealButton.hidden = false
+
+    }
+    
     matchName.text = "\(matchId)"
   }
   
@@ -39,7 +59,6 @@ class MatchCell: UITableViewCell {
   }
   
   private func changeImage(url: String) {
-    println(url)
     var nsurl: NSURL = NSURL(string: url)!
     var imageRequest: NSURLRequest = NSURLRequest(URL: nsurl)
     NSURLConnection.sendAsynchronousRequest(imageRequest,
@@ -50,8 +69,10 @@ class MatchCell: UITableViewCell {
         var decodedimage = UIImage(data: decodedData!)
         
         if let image = decodedimage? {
-          
+          println(image)
           self.avatarImageView.image = image
+        } else {
+          self.avatarImageView.image = UIImage(named: "avatar")
         }
     })
   }

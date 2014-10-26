@@ -11,7 +11,7 @@ class TutorialsController: UIViewController, UIPageViewControllerDataSource
         "Restart the pomodoro/break timer",
         "Set a long break"
     ]
-    let pageImages = ["page0.png", "page0.png", "page0.png"]
+    let pageImages = ["page1.png", "page2.png", "page3.png"]
     
     @IBAction func startButton(sender: UIButton) {
       self.dismissViewControllerAnimated(true, completion: nil)

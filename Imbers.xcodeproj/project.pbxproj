@@ -21,13 +21,15 @@
 		AEA2FEB119FBFFEB007E06D7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA2FEB019FBFFEB007E06D7 /* ViewController.swift */; };
 		AEA2FEB419FBFFEB007E06D7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AEA2FEB219FBFFEB007E06D7 /* Main.storyboard */; };
 		AEA2FEB619FBFFEB007E06D7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AEA2FEB519FBFFEB007E06D7 /* Images.xcassets */; };
-		AEA2FEB919FBFFEB007E06D7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = AEA2FEB719FBFFEB007E06D7 /* LaunchScreen.xib */; };
 		AEA2FEC519FBFFEB007E06D7 /* ImbersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA2FEC419FBFFEB007E06D7 /* ImbersTests.swift */; };
 		AEA2FECF19FC07BC007E06D7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA2FECE19FC07BC007E06D7 /* LoginViewController.swift */; };
 		AEA2FED219FC2215007E06D7 /* TutorialsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA2FED119FC2215007E06D7 /* TutorialsController.swift */; };
 		AEA2FED419FC2267007E06D7 /* PageContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA2FED319FC2267007E06D7 /* PageContentViewController.swift */; };
 		AEA2FEDE19FC2ECC007E06D7 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA2FEDD19FC2ECC007E06D7 /* Settings.swift */; };
 		AEA2FEE019FC3161007E06D7 /* page0.png in Resources */ = {isa = PBXBuildFile; fileRef = AEA2FEDF19FC3161007E06D7 /* page0.png */; };
+		AED2463A19FD505300D6E53B /* page1.png in Resources */ = {isa = PBXBuildFile; fileRef = AED2463719FD505300D6E53B /* page1.png */; };
+		AED2463B19FD505300D6E53B /* page2.png in Resources */ = {isa = PBXBuildFile; fileRef = AED2463819FD505300D6E53B /* page2.png */; };
+		AED2463C19FD505300D6E53B /* page3.png in Resources */ = {isa = PBXBuildFile; fileRef = AED2463919FD505300D6E53B /* page3.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,7 +60,6 @@
 		AEA2FEB019FBFFEB007E06D7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		AEA2FEB319FBFFEB007E06D7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AEA2FEB519FBFFEB007E06D7 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		AEA2FEB819FBFFEB007E06D7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		AEA2FEBE19FBFFEB007E06D7 /* ImbersTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ImbersTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEA2FEC319FBFFEB007E06D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AEA2FEC419FBFFEB007E06D7 /* ImbersTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImbersTests.swift; sourceTree = "<group>"; };
@@ -68,6 +69,9 @@
 		AEA2FED319FC2267007E06D7 /* PageContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageContentViewController.swift; sourceTree = "<group>"; };
 		AEA2FEDD19FC2ECC007E06D7 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		AEA2FEDF19FC3161007E06D7 /* page0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = page0.png; sourceTree = "<group>"; };
+		AED2463719FD505300D6E53B /* page1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = page1.png; sourceTree = "<group>"; };
+		AED2463819FD505300D6E53B /* page2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = page2.png; sourceTree = "<group>"; };
+		AED2463919FD505300D6E53B /* page3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = page3.png; sourceTree = "<group>"; };
 		E90D66002625CD7521A83DAC /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -144,7 +148,6 @@
 				AE3154D619FC35260045C0F5 /* SSToken.swift */,
 				AEA2FEB219FBFFEB007E06D7 /* Main.storyboard */,
 				AEA2FEB519FBFFEB007E06D7 /* Images.xcassets */,
-				AEA2FEB719FBFFEB007E06D7 /* LaunchScreen.xib */,
 				AEA2FEAC19FBFFEB007E06D7 /* Supporting Files */,
 				AEA2FED019FC07EB007E06D7 /* Imbers-Bridging-Header.h */,
 				AEA2FEDD19FC2ECC007E06D7 /* Settings.swift */,
@@ -156,6 +159,9 @@
 		AEA2FEAC19FBFFEB007E06D7 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				AED2463719FD505300D6E53B /* page1.png */,
+				AED2463819FD505300D6E53B /* page2.png */,
+				AED2463919FD505300D6E53B /* page3.png */,
 				AE6C3D4C19FD021B00EF86D4 /* test.mp4 */,
 				AEA2FEDF19FC3161007E06D7 /* page0.png */,
 				AEA2FEAD19FBFFEB007E06D7 /* Info.plist */,
@@ -264,7 +270,9 @@
 			files = (
 				AEA2FEB419FBFFEB007E06D7 /* Main.storyboard in Resources */,
 				AEA2FEE019FC3161007E06D7 /* page0.png in Resources */,
-				AEA2FEB919FBFFEB007E06D7 /* LaunchScreen.xib in Resources */,
+				AED2463B19FD505300D6E53B /* page2.png in Resources */,
+				AED2463A19FD505300D6E53B /* page1.png in Resources */,
+				AED2463C19FD505300D6E53B /* page3.png in Resources */,
 				AE6C3D4D19FD021B00EF86D4 /* test.mp4 in Resources */,
 				AEA2FEB619FBFFEB007E06D7 /* Images.xcassets in Resources */,
 			);
@@ -361,14 +369,6 @@
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		AEA2FEB719FBFFEB007E06D7 /* LaunchScreen.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				AEA2FEB819FBFFEB007E06D7 /* Base */,
-			);
-			name = LaunchScreen.xib;
-			sourceTree = "<group>";
-		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -454,6 +454,7 @@
 			baseConfigurationReference = AB80D79A5A34CDA7843CAA8F /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Veselin Todorov (MFPN3KM8WV)";
 				INFOPLIST_FILE = Imbers/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
@@ -469,6 +470,7 @@
 			baseConfigurationReference = E90D66002625CD7521A83DAC /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Veselin Todorov (MFPN3KM8WV)";
 				INFOPLIST_FILE = Imbers/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;

@@ -10,10 +10,12 @@ import UIKit
 
 class Match: NSObject {
   var id = ""
+  var revealed = false
   var user: User!
   
   required init(data: NSDictionary) {
     self.id = data["id"] as String
+    self.revealed = data["revealed"] as Bool
     self.user = User(data: data["user"]! as NSDictionary)
   }
 }
