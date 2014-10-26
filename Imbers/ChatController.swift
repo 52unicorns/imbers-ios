@@ -11,15 +11,14 @@ import UIKit
 class ChatController: JSQMessagesViewController, UIActionSheetDelegate {
   let manager = AFHTTPRequestOperationManager()
   let ssToken = SSToken(service: kSSTokenAuthService)
+  var data = Messages()
   
   var match: Match! {
     didSet {
       self.loadMessages(self.getToken())
     }
   }
-  
-  var data = Messages()
-  
+
   override func viewDidLoad() {
     super.viewDidLoad()
     
@@ -65,7 +64,6 @@ class ChatController: JSQMessagesViewController, UIActionSheetDelegate {
     
     self.manager.requestSerializer.setValue("Bearer \(self.getToken())", forHTTPHeaderField: "Authorization")
     
-    self.manager.responseSerializer = AFJSONResponseSerializer()
     self.manager.POST("\(kBaseUrl)/api/v0/matches/\(match.id)/messages", parameters: params,
       success: { (operation, responseObject) in
         var message = Message(data: responseObject as NSDictionary)

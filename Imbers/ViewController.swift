@@ -123,7 +123,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
   private func revokeAuthToken() {
     var params = ["token": self.getToken()]
     
-    self.manager.responseSerializer = AFJSONResponseSerializer()
     self.manager.POST("\(kBaseUrl)/oauth/revoke", parameters: params,
       success: { (operation, responseObject) in
         self.deleteToken()

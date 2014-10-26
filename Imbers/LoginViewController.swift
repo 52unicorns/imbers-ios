@@ -37,7 +37,6 @@ class LoginViewController: UIViewController, FBLoginViewDelegate {
   private func authenticate(token: String) {
     var params = ["grant_type": "assertion", "assertion": token]
     
-    self.manager.responseSerializer = AFJSONResponseSerializer()
     self.manager.POST("\(kBaseUrl)/oauth/token", parameters: params,
       success: { (operation, responseObject) in
         self.storeToken(responseObject["access_token"])
